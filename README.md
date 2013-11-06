@@ -1,4 +1,4 @@
 spring-sample
 =============
 
-a spring mvc sample
+an client meeting API
