@@ -17,9 +17,9 @@ public class Test {
 		
 		ClientDAO dao = (ClientDAO) context.getBean("clientDAO");
 		
-		List<Client> list = dao.findAll();
-		
-		System.out.println(list.size());
+//		List<Client> list = dao.findAll();
+//		
+//		System.out.println(list.size());
 	}
 
 }

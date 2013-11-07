@@ -1,20 +1,26 @@
 package com.spring.sample.model.json;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.spring.sample.model.Client;
 
 public class JSONClient {
 
 	private String href;
-	private List<Client> clients = new ArrayList<Client>();
-	private String next;
-	private String previous;
-	private int totalCount;
+	private int id;
+	private String salesForceId;
+	private int jiveId;
+	private String practice;
+	private String potential;
+	private String stage;
+	private String pace;
+	private JSONContactsLink contactsLink;
 
-	public JSONClient(List<Client> clients) {
-		this.clients = clients;
+	public JSONClient(Client client) {
+		this.id = client.getId();
+		this.jiveId = client.getJiveId();
+		this.practice = client.getPractice();
+		this.potential = client.getPotential();
+		this.stage = client.getStage();
+		this.pace = client.getPace();
 	}
 	
 	public String getHref() {
@@ -25,36 +31,67 @@ public class JSONClient {
 		this.href = href;
 	}
 
-	public List<Client> getClients() {
-		return clients;
+	public int getId() {
+		return id;
 	}
 
-	public void setClients(List<Client> clients) {
-		this.clients = clients;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public String getNext() {
-		return next;
+	public String getSalesForceId() {
+		return salesForceId;
 	}
 
-	public void setNext(String next) {
-		this.next = next;
+	public void setSalesForceId(String salesForceId) {
+		this.salesForceId = salesForceId;
 	}
 
-	public String getPrevious() {
-		return previous;
+	public int getJiveId() {
+		return jiveId;
 	}
 
-	public void setPrevious(String previous) {
-		this.previous = previous;
+	public void setJiveId(int jiveId) {
+		this.jiveId = jiveId;
 	}
 
-	public int getTotalCount() {
-		return totalCount;
+	public String getPractice() {
+		return practice;
 	}
 
-	public void setTotalCount(int totalCount) {
-		this.totalCount = totalCount;
+	public void setPractice(String practice) {
+		this.practice = practice;
 	}
 
+	public String getPotential() {
+		return potential;
+	}
+
+	public void setPotential(String potential) {
+		this.potential = potential;
+	}
+
+	public String getStage() {
+		return stage;
+	}
+
+	public void setStage(String stage) {
+		this.stage = stage;
+	}
+
+	public String getPace() {
+		return pace;
+	}
+
+	public void setPace(String pace) {
+		this.pace = pace;
+	}
+
+	public JSONContactsLink getContactsLink() {
+		return contactsLink;
+	}
+
+	public void setContactsLink(JSONContactsLink contactsLink) {
+		this.contactsLink = contactsLink;
+	}
 }

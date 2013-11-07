@@ -5,14 +5,17 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.sample.dao.ClientDAO;
 import com.spring.sample.model.Client;
 import com.spring.sample.model.json.JSONClient;
+import com.spring.sample.model.json.JSONClients;
 
 import flexjson.JSONSerializer;
 
@@ -24,17 +27,35 @@ public class ClientController {
 	private ClientDAO clientDAO;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public @ResponseBody String getAllClient(HttpServletRequest request) {
+	public ResponseEntity<String>  getAllClients(HttpServletRequest request) {
 		
-		List<Client> clients = clientDAO.findAll();
+		int startIndex = request.getParameter( "startIndex" ) != null ? Integer.valueOf( request.getParameter( "startIndex" ) ) : 0;
+		int count = request.getParameter("count") != null ? Integer.valueOf( request.getParameter( "count" ) ) : 0;
 		
-		JSONClient jsonClients = new JSONClient(clients);
+		List<Client> clients = clientDAO.findAll(startIndex, count);
+		
+		JSONClients jsonClients = new JSONClients(clients);
 		
 		String restOfTheUrl = request.getRequestURL().toString();
+		
 		jsonClients.setTotalCount(clients != null ? clients.size() : 0);
 		jsonClients.setHref(restOfTheUrl);
 		
-		return new JSONSerializer().exclude("*.class").deepSerialize(jsonClients);
+		return new ResponseEntity<String>(new JSONSerializer().exclude("*.class").deepSerialize(jsonClients), HttpStatus.OK) ;
+	}
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public ResponseEntity<String> getClient(@PathVariable("id") int id, HttpServletRequest request) {
+		
+		Client client = clientDAO.findById(id);
+		
+		String result = "";
+		if (client != null) {
+			JSONClient jsonClient = new JSONClient(client);
+			result = new JSONSerializer().exclude("*.class").deepSerialize(jsonClient);
+		}
+		
+		return new ResponseEntity<String>(result, HttpStatus.OK);
 	}
 
 }
