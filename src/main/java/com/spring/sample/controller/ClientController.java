@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,6 +17,7 @@ import com.spring.sample.dao.ClientDAO;
 import com.spring.sample.model.Client;
 import com.spring.sample.model.json.JSONClient;
 import com.spring.sample.model.json.JSONClients;
+import com.spring.sample.model.json.JSONContactsLink;
 
 import flexjson.JSONSerializer;
 
@@ -51,11 +53,26 @@ public class ClientController {
 		
 		String result = "";
 		if (client != null) {
+			
 			JSONClient jsonClient = new JSONClient(client);
+			JSONContactsLink link = new JSONContactsLink(request.getRequestURL().toString());
+			
+			jsonClient.setContactsLink(link);
+			
 			result = new JSONSerializer().exclude("*.class").deepSerialize(jsonClient);
 		}
 		
 		return new ResponseEntity<String>(result, HttpStatus.OK);
 	}
 
+	@RequestMapping(value = "/update", method = RequestMethod.PUT)
+	public ResponseEntity<String> update(@ModelAttribute("client") Client client, HttpServletRequest request) {
+		clientDAO.update(client);
+		return new ResponseEntity<String>(HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/{id}/contacts")
+	public ResponseEntity<String> getContacts(HttpServletRequest request) {
+		return new ResponseEntity<String>(HttpStatus.OK);
+	}
 }

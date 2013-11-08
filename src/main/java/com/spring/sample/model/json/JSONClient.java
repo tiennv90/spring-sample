@@ -16,6 +16,7 @@ public class JSONClient {
 
 	public JSONClient(Client client) {
 		this.id = client.getId();
+		this.salesForceId = client.getSalesForceId();
 		this.jiveId = client.getJiveId();
 		this.practice = client.getPractice();
 		this.potential = client.getPotential();
