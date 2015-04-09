@@ -12,7 +12,7 @@
 	<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location">
-			<value>classpath:database.properties</value>
+			<value>classpath:mysqldatabase.properties</value>
 		</property>
 	</bean>
 
@@ -34,8 +34,9 @@
 		<property name="hibernateProperties">
 			<props>
 				<prop key="connection.pool_size">1</prop>
-				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hbm2ddl.auto">create</prop>
 			</props>
 		</property>
 
