@@ -21,13 +21,17 @@ public class User implements Serializable {
 	@GeneratedValue
 	@Column(name = "id")
 	private int id;
+	
+	@Column(nullable=false, unique=true)
+	private String userName;
+	
 	private String name;
 	private String email;
 	private String address;
 	private boolean isAdmin;
 	private String password;
 	
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "payment", cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
 	private PaymentMethod payment;
 	
 	public int getId() {
@@ -89,5 +93,14 @@ public class User implements Serializable {
 	public void setPayment(PaymentMethod payment) {
 		this.payment = payment;
 	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	
 
 }

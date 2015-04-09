@@ -8,9 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "client")
-public class Client implements Serializable {
+//@Entity
+//@Table(name = "client")
+public class Client {
 
 	private static final long serialVersionUID = 1L;
 	

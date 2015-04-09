@@ -25,6 +25,11 @@ public class Product {
 	@JoinColumn(name = "categoryId", nullable = false, insertable = false, updatable = false)
 	private Category category;
 
+	private String imageUrl;
+	private int discountPrice;
+	private boolean isSpecialProduct;
+	private boolean dealOfTheDay;
+	
 	public int getId() {
 		return id;
 	}
@@ -57,4 +62,37 @@ public class Product {
 		this.category = category;
 	}
 
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
+	public int getDiscountPrice() {
+		return discountPrice;
+	}
+
+	public void setDiscountPrice(int discountPrice) {
+		this.discountPrice = discountPrice;
+	}
+
+	public boolean isSpecialProduct() {
+		return isSpecialProduct;
+	}
+
+	public void setSpecialProduct(boolean isSpecialProduct) {
+		this.isSpecialProduct = isSpecialProduct;
+	}
+
+	public boolean isDealOfTheDay() {
+		return dealOfTheDay;
+	}
+
+	public void setDealOfTheDay(boolean dealOfTheDay) {
+		this.dealOfTheDay = dealOfTheDay;
+	}
+	
+	
 }
