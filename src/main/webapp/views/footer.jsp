@@ -3,13 +3,13 @@
             <div class="col-sm-12">
                 <ul class="nav nav-pills">
                     <li>
-                        <a href="index.html"><img src="/images/logo_half.png" height="30" alt="">
+                        <a href="/"><img src="/images/logo_half.png" height="30" alt="">
                         </a>
-                        <li><a href="about_us.html">About Us</a>
+                        <li><a href="/about">About Us</a>
                         </li>
-                        <li><a href="feedback.html">Feedback</a>
+                        <li><a href="/feedback">Feedback</a>
                         </li>
-                        <li><a href="contact.html">Contact</a>
+                        <li><a href="/contact">Contact</a>
                         </li>
                 </ul>
             </div>

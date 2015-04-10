@@ -25,4 +25,12 @@ public class UserController {
 	public String createaccount(ModelMap model) {
 		return "user/createAccount";
 	}	
+	
+	@RequestMapping(value="/myaccount", method = RequestMethod.GET)
+	public String myaccount(ModelMap model) {
+		return "user/myAccount";
+	}	
+	
+	
+	
 }

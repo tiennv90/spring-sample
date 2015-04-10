@@ -1,4 +1,4 @@
 spring-sample
 =============
 
-an client meeting API (Spring MVC + Spring Security + Hibernate)
+an simple e-comercial website (Spring MVC + Spring Security + Hibernate)

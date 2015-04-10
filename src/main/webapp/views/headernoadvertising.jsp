@@ -90,8 +90,3 @@
     </nav>
     <!--  -->	
     
-    <div class="container">
-        <div class="col-xs-12 deal-of-day">
-            <a href="/product/dealoftheday"><img class="img-responsive" src="/images/deal-day01.png" alt=""> </a>
-        </div>
-    </div>   
