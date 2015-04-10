@@ -52,7 +52,7 @@ public class UserDAO {
 	public User findByUserNameAndPassword(String userName, String password) {
 		Session session = sessionFactory.openSession();
 		try {
-			String hql = "FROM User u WHERE E.username = :username and u.password =:password";
+			String hql = "from User u WHERE u.userName = :username and u.password = :password";
 			Query query = session.createQuery(hql);
 			query.setParameter("username",userName);
 			query.setParameter("password", password);
@@ -61,7 +61,7 @@ public class UserDAO {
 				return (User) results.get(0);
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		} finally {
 			session.close();
 		}

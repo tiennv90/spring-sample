@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page import="com.spring.sample.model.User"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="en">
 
@@ -40,12 +41,20 @@
                 <div class="col-md-5 col-md-offset-2  col-sm-5 col-sm-offset-1 col-xs-12">
 
                     <ul class="nav navbar-nav pull-right">
+                    <%
+                    	User user = (User) request.getSession().getAttribute("user");
+                    	if (user == null) {
+                    %>
                         <li><a href="/user/signin">Sign In</a>
                         </li>
                         <li><a href="/user/create">Create Account</a>
                         </li>
+                        <% } else { %>
                         <li><a href="/user/myaccount">My Account</a>
                         </li>
+                        <li><a href="/login/logout">Logout</a>
+                        </li>                        
+                        <% } %>
                         <li><a href="/help">Help</a>
                         </li>
                     </ul>

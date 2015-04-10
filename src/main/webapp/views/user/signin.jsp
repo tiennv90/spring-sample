@@ -3,17 +3,40 @@
 <div class="container">
     <div class="col-xs-6 col-xs-offset-3  sign_in">
         <h3>Sign In </h3>
-        <form class="form-horizontal">
+        
+		<script type="text/javascript">
+			
+			jQuery(document).ready(function() {
+		 
+				jQuery('#login').submit(function(e) {
+					e.preventDefault();
+					
+					var str = jQuery("#login").serialize();
+					
+					jQuery.ajax({
+					    type:"post",
+					    data:str,
+					    url:"/login",
+					    success: function(response){
+					    	var obj = JSON.parse(response);
+					    	document.location.href= obj.redirectUrl;
+					    }
+					});
+				});
+			});
+		</script>        
+        
+        <form method="post" id="login" class="form-horizontal">
             <div class="form-group">
                 <label for="inputEmail3">Email</label>
 
-                <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                <input type="email" name="userName" class="form-control" id="inputEmail3" placeholder="Email">
 
             </div>
             <div class="form-group">
                 <label for="inputPassword3">Password</label>
                 
-                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                    <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="Password">
                
             </div>
             <div class="form-group">

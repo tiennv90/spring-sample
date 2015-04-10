@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 -- 
 -- Host: localhost
--- Generation Time: Apr 10, 2015 at 10:49 PM
+-- Generation Time: Apr 11, 2015 at 01:54 AM
 -- Server version: 5.0.51
 -- PHP Version: 5.2.6
 
@@ -36,6 +36,34 @@ INSERT INTO `category` VALUES (4, 'Mobility');
 INSERT INTO `category` VALUES (5, 'Kitchen');
 INSERT INTO `category` VALUES (6, 'Hobbies');
 INSERT INTO `category` VALUES (7, 'Phones & Pagers');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `feedback`
+-- 
+
+CREATE TABLE `feedback` (
+  `id` int(11) NOT NULL auto_increment,
+  `email` varchar(255) default NULL,
+  `feedback` varchar(255) default NULL,
+  `name` varchar(255) default NULL,
+  `phoneNumber` varchar(255) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+
+-- 
+-- Dumping data for table `feedback`
+-- 
+
+INSERT INTO `feedback` VALUES (1, 'tiennv90@gmail.com', 'dasdasdadasd', 'Tien Nguyen', '0167323232');
+INSERT INTO `feedback` VALUES (2, 'tiennv90@gmail.com', 'dasdasdadasd', 'Tien Nguyen', '0167323232');
+INSERT INTO `feedback` VALUES (3, 'tiennv90@gmail.com', 'asdasdasdasda', 'Tien Nguyen', '0167323232');
+INSERT INTO `feedback` VALUES (4, 'tienstreetdance@yahoo.com', 'asdasdasdasd', 'Tien Nguyen', '0167323232');
+INSERT INTO `feedback` VALUES (5, 'tienstreetdance@yahoo.com', 'asdasdasdasd', 'Tien Nguyen', '0167323232');
+INSERT INTO `feedback` VALUES (6, 'caube_ngaytho8@yahoo.com', 'caube_ngaytho8@yahoo.com', 'Nguyen Tien', '0167323232');
+INSERT INTO `feedback` VALUES (7, 'hiepnguyenkh@gmail.com', 'hiepnguyenkh@gmail.com', 'Tien Nguyen', '0167323232');
+INSERT INTO `feedback` VALUES (8, 'viettien20@gmail.com', 'sadasdasdas', 'Nguyen Tien', '0167323232');
 
 -- --------------------------------------------------------
 
@@ -152,9 +180,11 @@ CREATE TABLE `user` (
   `userName` varchar(255) NOT NULL,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `userName` (`userName`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 -- 
 -- Dumping data for table `user`
 -- 
 
+INSERT INTO `user` VALUES (1, NULL, 'admin@gmail.com', 1, 'Administrator', '21232f297a57a5a743894a0e4a801fc3', 'admin@gmail.com');
+INSERT INTO `user` VALUES (2, '', 'tien@gmail.com', 0, 'Tien Nguyen', '2a26569e98b26668f39e98e6baef2d54', 'tien@gmail.com');
