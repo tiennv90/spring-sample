@@ -8,7 +8,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.spring.sample.model.Product;
+import com.spring.sample.model.Category;
 
 @Repository("categoryDAO")
 public class CategoryDAO {
@@ -17,7 +17,7 @@ public class CategoryDAO {
 	private SessionFactory sessionFactory;
 	
 	@SuppressWarnings("unchecked")
-	public List<Product> findAll(int startIndex, int count) {
+	public List<Category> findAll(int startIndex, int count) {
 
 		Session session = sessionFactory.openSession();
 		try {

@@ -19,14 +19,14 @@ public class Product {
 	private int id;
 
 	private String name;
-	private int price;
+	private Double price;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "categoryId", nullable = false, insertable = false, updatable = false)
 	private Category category;
 
 	private String imageUrl;
-	private int discountPrice;
+	private Double discountPrice;
 	private boolean isSpecialProduct;
 	private boolean dealOfTheDay;
 	
@@ -46,13 +46,6 @@ public class Product {
 		this.name = name;
 	}
 
-	public int getPrice() {
-		return price;
-	}
-
-	public void setPrice(int price) {
-		this.price = price;
-	}
 
 	public Category getCategory() {
 		return category;
@@ -70,14 +63,6 @@ public class Product {
 		this.imageUrl = imageUrl;
 	}
 
-	public int getDiscountPrice() {
-		return discountPrice;
-	}
-
-	public void setDiscountPrice(int discountPrice) {
-		this.discountPrice = discountPrice;
-	}
-
 	public boolean isSpecialProduct() {
 		return isSpecialProduct;
 	}
@@ -92,6 +77,22 @@ public class Product {
 
 	public void setDealOfTheDay(boolean dealOfTheDay) {
 		this.dealOfTheDay = dealOfTheDay;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
+	public Double getDiscountPrice() {
+		return discountPrice;
+	}
+
+	public void setDiscountPrice(Double discountPrice) {
+		this.discountPrice = discountPrice;
 	}
 	
 	

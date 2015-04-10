@@ -59,6 +59,7 @@
 
     </header>
     <!-- //HEADER -->
+    
     <nav id="navbar" class="navbar navbar-default">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -74,14 +75,16 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="clothing.html">Clothing <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li><a href="bathing_n_grooming.html">Bathing &amp; Grooming</a> </li>
-                    <li><a href="health_product.html">Health Products</a> </li>
-                    <li><a href="mobility.html">Mobility</a> </li>
-                    <li><a href="kitchen.html">Kitchen</a> </li>
-                    <li><a href="hobbies.html">Hobbies</a> </li>
-                    <li><a href="phones_n_pager.html">Phones &amp; Pagers</a> </li>
+	                <c:forEach var="category" items="${categories}">
+		                <c:choose>
+		                	<c:when test="${currentCategory eq  category.name}">
+		                	 	<li class="active"><a href="phones_n_pager.html">${category.name}</a></li>
+		                	</c:when>
+		                	<c:otherwise>
+		                		<li><a href="phones_n_pager.html">${category.name}</a></li>
+		                	</c:otherwise>
+		                </c:choose>	 
+	                </c:forEach>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
