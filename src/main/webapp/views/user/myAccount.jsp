@@ -29,7 +29,7 @@
             
             <h3>Welcome, Demo User</h3>
                 <P>
-                <img src="images/demo_user.png" alt="demo user">
+                <img src="/images/demo_user.png" alt="demo user">
                     Name: Mr. Demo User <br>
                     Email: email@demo.com <br>
                     Address: Demo Street, State, Country.<br>

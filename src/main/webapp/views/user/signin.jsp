@@ -31,7 +31,7 @@
                 
                 
                     <p>
-                        <a href="#">Forgot Your Password? </a> <span> Don't have an account?</span> <a href="creat_account.html">Sign Up</a>
+                        <a href="#">Forgot Your Password? </a> <span> Don't have an account?</span> <a href="/user/create">Sign Up</a>
                     </p>
                 </div>
 

@@ -1,35 +1,57 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ include file="/views/header.jsp" %>
 
     <!--  -->
     <!--  -->
+	<script type="text/javascript">
+		
+		jQuery(document).ready(function() {
+	 
+			jQuery('#feedback').submit(function(e) {
+				e.preventDefault();
+				
+				var str = jQuery("#feedback").serialize();
+				
+				jQuery.ajax({
+				    type:"post",
+				    data:str,
+				    url:"/feedback/save",
+				    async: false,
+				    success: function(response){
+				       alert("Your feedback was sent " + response + "!");
+				       document.location.href="/";
+				    }
+				});
+			});
+		});
+	</script>
+    
     <div class="container">
         <div class="col-xs-6 col-xs-offset-3  feedback">
 
-            <form class="form-horizontal">
+            <form:form modelAttribute="feedback" method="post" id="feedback" >
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Name">
+                    <form:input path="name" class="form-control" placeholder="Name" />
                 </div>
                 <div class="form-group">
                     <label for="phone">Phone Number</label>
-                    <input type="text" class="form-control" id="phone" placeholder="Phone Number">
+                    <form:input path="phoneNumber" class="form-control" placeholder="Phone Number" />
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="text" class="form-control" id="email" placeholder="Enter your Email">
+                    <form:input path="email" class="form-control" placeholder="Enter your Email" />
                 </div>
                 <div class="form-group">
                     <label for="feedback">Feedback</label>
-                    <textarea class="form-control" rows="3" id="feedback" placeholder="Feedback"></textarea>
+                    <form:textarea rows="3" path="feedback" class="form-control" placeholder="Feedback" />
                 </div>
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-default">Submit</button>
-
                 </div>
-        </div>
-        </form>
-    </div>
+             </form:form>   
+        	</div>
     </div>
     <!--  -->
     <!--  -->

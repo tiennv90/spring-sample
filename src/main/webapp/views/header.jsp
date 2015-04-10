@@ -15,7 +15,7 @@
     <link href="<c:url value="/stylesheets/responsive.css" />" rel="stylesheet">
     
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600,700' rel='stylesheet' type='text/css'>
-
+	<script src="/js/1.11.2/jquery.min.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
