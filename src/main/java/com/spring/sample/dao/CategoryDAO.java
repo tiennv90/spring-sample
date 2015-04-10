@@ -34,5 +34,16 @@ public class CategoryDAO {
 			session.close();
 		}
 
+	}
+	
+	public Category findById(int id) {
+		
+		Session session = sessionFactory.openSession();
+		try {
+			 return (Category) session.get(Category.class, id);
+		} finally {
+			session.close();
+		}
+		
 	}	
 }

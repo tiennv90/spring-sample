@@ -78,10 +78,10 @@
 	                <c:forEach var="category" items="${categories}">
 		                <c:choose>
 		                	<c:when test="${currentCategory eq  category.name}">
-		                	 	<li class="active"><a href="phones_n_pager.html">${category.name}</a></li>
+		                	 	<li class="active"><a href="/category/${category.id}">${category.name}</a></li>
 		                	</c:when>
 		                	<c:otherwise>
-		                		<li><a href="phones_n_pager.html">${category.name}</a></li>
+		                		<li><a href="/category/${category.id}">${category.name}</a></li>
 		                	</c:otherwise>
 		                </c:choose>	 
 	                </c:forEach>

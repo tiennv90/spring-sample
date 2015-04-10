@@ -11,7 +11,7 @@ import com.spring.sample.dao.UserDAO;
 
 @Controller
 @RequestMapping("/user")
-public class UserController {
+public class UserController extends BaseController {
 
 	@Autowired
 	private UserDAO userDAO;

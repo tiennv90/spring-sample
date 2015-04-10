@@ -22,7 +22,7 @@ public class HomePageController extends BaseController {
 	}
 
 	@Override
-	public String currentCategory() {
+	public String currentCategory(HttpServletRequest request) {
 		return "empty";
 	}
 

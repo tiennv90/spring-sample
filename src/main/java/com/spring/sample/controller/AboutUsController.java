@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping(value="/about")
-public class AboutUsController {
+public class AboutUsController extends BaseController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String index() {

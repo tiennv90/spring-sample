@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping(value="/contact")
-public class ContactController {
+public class ContactController extends BaseController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String index() {
