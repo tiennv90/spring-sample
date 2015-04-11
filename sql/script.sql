@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 -- 
 -- Host: localhost
--- Generation Time: Apr 11, 2015 at 02:42 PM
+-- Generation Time: Apr 12, 2015 at 03:00 AM
 -- Server version: 5.0.51
 -- PHP Version: 5.2.6
 
@@ -50,7 +50,7 @@ CREATE TABLE `feedback` (
   `name` varchar(255) default NULL,
   `phoneNumber` varchar(255) default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 -- 
 -- Dumping data for table `feedback`
@@ -64,6 +64,7 @@ INSERT INTO `feedback` VALUES (5, 'tienstreetdance@yahoo.com', 'asdasdasdasd', '
 INSERT INTO `feedback` VALUES (6, 'caube_ngaytho8@yahoo.com', 'caube_ngaytho8@yahoo.com', 'Nguyen Tien', '0167323232');
 INSERT INTO `feedback` VALUES (7, 'hiepnguyenkh@gmail.com', 'hiepnguyenkh@gmail.com', 'Tien Nguyen', '0167323232');
 INSERT INTO `feedback` VALUES (8, 'viettien20@gmail.com', 'sadasdasdas', 'Nguyen Tien', '0167323232');
+INSERT INTO `feedback` VALUES (9, 'viettien20@gmail.com', 'asdasdasdsa', 'ntproduction', '0167323232');
 
 -- --------------------------------------------------------
 
@@ -75,13 +76,24 @@ CREATE TABLE `orders` (
   `id` int(11) NOT NULL auto_increment,
   `orderDate` datetime default NULL,
   `status` varchar(255) default NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  `cardNumber` varchar(255) default NULL,
+  `cvv` varchar(255) default NULL,
+  `userId` int(11) NOT NULL,
+  PRIMARY KEY  (`id`),
+  KEY `FKC3DF62E555912EA6` (`userId`),
+  KEY `FKC3DF62E539C23640` (`userId`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 -- 
 -- Dumping data for table `orders`
 -- 
 
+INSERT INTO `orders` VALUES (1, NULL, 'Waiting', '1234567890123456', 'AXB', 2);
+INSERT INTO `orders` VALUES (2, NULL, 'Waiting', '1234567890123456', 'AXB', 2);
+INSERT INTO `orders` VALUES (3, NULL, 'Waiting', '1234567890123456', 'AXB', 2);
+INSERT INTO `orders` VALUES (4, NULL, 'Waiting', '1234567890123456', 'AXB', 2);
+INSERT INTO `orders` VALUES (5, NULL, 'Waiting', '1234567890123456', 'AXK', 2);
+INSERT INTO `orders` VALUES (6, '2015-04-11 23:50:03', 'Waiting', '1234567890123456', 'DXG', 2);
 
 -- --------------------------------------------------------
 
@@ -100,26 +112,8 @@ CREATE TABLE `orders_product` (
 -- Dumping data for table `orders_product`
 -- 
 
-
--- --------------------------------------------------------
-
--- 
--- Table structure for table `paymentmethod`
--- 
-
-CREATE TABLE `paymentmethod` (
-  `id` int(11) NOT NULL auto_increment,
-  `cvv` varchar(255) default NULL,
-  `number` varchar(255) default NULL,
-  `user_id` int(11) default NULL,
-  PRIMARY KEY  (`id`),
-  KEY `FK80D9E6677EA0EA8F` (`user_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
--- 
--- Dumping data for table `paymentmethod`
--- 
-
+INSERT INTO `orders_product` VALUES (5, 5);
+INSERT INTO `orders_product` VALUES (6, 8);
 
 -- --------------------------------------------------------
 
@@ -190,5 +184,5 @@ CREATE TABLE `user` (
 -- 
 
 INSERT INTO `user` VALUES (1, NULL, 'admin@gmail.com', 1, '21232f297a57a5a743894a0e4a801fc3', 'admin@gmail.com', NULL, NULL, NULL);
-INSERT INTO `user` VALUES (2, 'Viet Nam', 'tien@gmail.com', 0, '2a26569e98b26668f39e98e6baef2d54', 'tien@gmail.com', 'Tien', 'Nguyen', NULL);
+INSERT INTO `user` VALUES (2, 'Russia', 'tien@gmail.com', 0, '2a26569e98b26668f39e98e6baef2d54', 'tien@gmail.com', 'Tien', 'Le', NULL);
 INSERT INTO `user` VALUES (9, 'sa', 'sa@gmail.com', 0, 'c12e01f2a13ff5587e1e9e4aedb8242d', 'sa@gmail.com', 'sa', 'sa', NULL);
