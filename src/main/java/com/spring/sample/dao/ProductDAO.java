@@ -36,4 +36,19 @@ public class ProductDAO {
 
 	}
 	
+	public Product findById(int id) {
+		
+		Session session = sessionFactory.openSession();
+		try {
+			 return (Product) session.get(Product.class, id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		
+		return null;
+		
+	}
+	
 }

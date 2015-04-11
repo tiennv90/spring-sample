@@ -1,6 +1,7 @@
 package com.spring.sample.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -8,8 +9,11 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 @Entity
 @Table(name = "user")
@@ -25,14 +29,25 @@ public class User implements Serializable {
 	@Column(nullable=false, unique=true)
 	private String userName;
 	
-	private String name;
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)	
+	private List<Orders> orders;
+	
+	private String firstName;
+	private String lastName;
 	private String email;
 	private String address;
 	private boolean isAdmin;
 	private String password;
 	
-	@OneToOne(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
-	private PaymentMethod payment;
+	@Transient
+	private CommonsMultipartFile fileData;
+	
+	private String imageUrl;
+	
+	@Transient
+	private String repassword;
+	
+
 	
 	public int getId() {
 		return id;
@@ -40,14 +55,6 @@ public class User implements Serializable {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getEmail() {
@@ -86,12 +93,12 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public PaymentMethod getPayment() {
-		return payment;
+	public List<Orders> getOrders() {
+		return orders;
 	}
 
-	public void setPayment(PaymentMethod payment) {
-		this.payment = payment;
+	public void setOrders(List<Orders> orders) {
+		this.orders = orders;
 	}
 
 	public String getUserName() {
@@ -101,6 +108,45 @@ public class User implements Serializable {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	
 
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getRepassword() {
+		return repassword;
+	}
+
+	public void setRepassword(String repassword) {
+		this.repassword = repassword;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
+	public CommonsMultipartFile getFileData() {
+		return fileData;
+	}
+
+	public void setFileData(CommonsMultipartFile fileData) {
+		this.fileData = fileData;
+	}
+	
 }

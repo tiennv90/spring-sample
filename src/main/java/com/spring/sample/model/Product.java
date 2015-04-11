@@ -1,5 +1,7 @@
 package com.spring.sample.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -7,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,13 +25,17 @@ public class Product {
 	private Double price;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "categoryId", nullable = false, insertable = false, updatable = false)
+	@JoinColumn(name = "categoryId")
 	private Category category;
 
 	private String imageUrl;
 	private Double discountPrice;
 	private boolean isSpecialProduct;
 	private boolean dealOfTheDay;
+	
+	@OneToMany
+	@JoinColumn(name="userId")
+	private List<Orders> orders;
 	
 	public int getId() {
 		return id;
@@ -94,6 +101,13 @@ public class Product {
 	public void setDiscountPrice(Double discountPrice) {
 		this.discountPrice = discountPrice;
 	}
-	
+
+	public List<Orders> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Orders> orders) {
+		this.orders = orders;
+	}
 	
 }

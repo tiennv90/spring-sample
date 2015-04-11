@@ -19,7 +19,12 @@
 					    url:"/login",
 					    success: function(response){
 					    	var obj = JSON.parse(response);
-					    	document.location.href= obj.redirectUrl;
+					    	if (obj.success === true) {
+					    		window.alert("Login Successfully !");
+					    		document.location.href= obj.redirectUrl;
+					    	} else {
+					    		window.alert(obj.errorMessage);
+					    	}
 					    }
 					});
 				});

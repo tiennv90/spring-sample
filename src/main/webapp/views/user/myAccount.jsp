@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ include file="/views/header.jsp" %>
 
     <div class="container">
@@ -5,21 +6,15 @@
         <div class="col-sm-3 col-md-2 sidebar">
             <h3>My Account</h3>
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="#">View Profile <span class="sr-only">(current)</span></a>
+                <li class="active"><a href="/user/myaccount">View Profile <span class="sr-only">(current)</span></a>
                 </li>
-                <li><a href="#">Edit Profile</a></li>
+                <li><a href="/user/edit">Edit Profile</a></li>
             </ul>
             <h3>My Orders</h3>
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="#">View Orders</a>
+                <li class="active"><a href="/user/orders">View Orders</a>
                 </li>
-                <li><a href="#">Edit Orders</a></li>
-            </ul>
-             <h3>My Payment</h3>
-            <ul class="nav nav-sidebar">
-                <li class="active"><a href="#">Payment Details</a>
-                </li>
-                <li><a href="#">Edit Payment</a></li>
+                <li><a href="/user/oders/edit">Edit Orders</a></li>
             </ul>
 
 
@@ -27,12 +22,14 @@
         <div class="col-sm-9 col-md-10 mainarea">
             <div>
             
-            <h3>Welcome, Demo User</h3>
+            <h3>Welcome, ${user.firstName} ${user.lastName}</h3>
                 <P>
-                <img src="/images/demo_user.png" alt="demo user">
-                    Name: Mr. Demo User <br>
-                    Email: email@demo.com <br>
-                    Address: Demo Street, State, Country.<br>
+                <c:if test="${not empty user.imageUrl}">
+                <img src="${user.imageUrl}" alt="${user.firstName} ${user.lastName}">
+                </c:if>
+                    Name: ${user.firstName} ${user.lastName} <br>
+                    Email: ${user.userName} <br>
+                    Address: ${user.address}<br>
                 </P>
                 
             </div>
