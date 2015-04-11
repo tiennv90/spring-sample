@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 -- 
 -- Host: localhost
--- Generation Time: Apr 11, 2015 at 01:54 AM
+-- Generation Time: Apr 11, 2015 at 02:42 PM
 -- Server version: 5.0.51
 -- PHP Version: 5.2.6
 
@@ -74,6 +74,7 @@ INSERT INTO `feedback` VALUES (8, 'viettien20@gmail.com', 'sadasdasdas', 'Nguyen
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL auto_increment,
   `orderDate` datetime default NULL,
+  `status` varchar(255) default NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -175,16 +176,19 @@ CREATE TABLE `user` (
   `address` varchar(255) default NULL,
   `email` varchar(255) default NULL,
   `isAdmin` tinyint(1) NOT NULL,
-  `name` varchar(255) default NULL,
   `password` varchar(255) default NULL,
   `userName` varchar(255) NOT NULL,
+  `firstName` varchar(255) default NULL,
+  `lastName` varchar(255) default NULL,
+  `imageUrl` varchar(255) default NULL,
   PRIMARY KEY  (`id`),
   UNIQUE KEY `userName` (`userName`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 -- 
 -- Dumping data for table `user`
 -- 
 
-INSERT INTO `user` VALUES (1, NULL, 'admin@gmail.com', 1, 'Administrator', '21232f297a57a5a743894a0e4a801fc3', 'admin@gmail.com');
-INSERT INTO `user` VALUES (2, '', 'tien@gmail.com', 0, 'Tien Nguyen', '2a26569e98b26668f39e98e6baef2d54', 'tien@gmail.com');
+INSERT INTO `user` VALUES (1, NULL, 'admin@gmail.com', 1, '21232f297a57a5a743894a0e4a801fc3', 'admin@gmail.com', NULL, NULL, NULL);
+INSERT INTO `user` VALUES (2, 'Viet Nam', 'tien@gmail.com', 0, '2a26569e98b26668f39e98e6baef2d54', 'tien@gmail.com', 'Tien', 'Nguyen', NULL);
+INSERT INTO `user` VALUES (9, 'sa', 'sa@gmail.com', 0, 'c12e01f2a13ff5587e1e9e4aedb8242d', 'sa@gmail.com', 'sa', 'sa', NULL);
