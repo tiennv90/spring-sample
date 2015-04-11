@@ -2,7 +2,7 @@ package com.spring.sample.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,9 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.spring.sample.dao.OrdersDAO;
 import com.spring.sample.dao.UserDAO;
+import com.spring.sample.model.Orders;
 import com.spring.sample.model.User;
 import com.spring.sample.model.json.JsonLogin;
 import com.spring.sample.util.Utils;
@@ -32,7 +33,9 @@ public class UserController extends BaseController {
 	@Autowired
 	private UserDAO userDAO;
 
-
+	@Autowired
+	private OrdersDAO ordersDAO;
+	
 	@RequestMapping(value = "/signin", method = RequestMethod.GET)
 	public String signin(HttpServletRequest request, ModelMap model) {
 
@@ -164,6 +167,21 @@ public class UserController extends BaseController {
 		}
 		model.put("user", user);
 		return "user/myAccount";
+	}
+	
+	@RequestMapping(value="/myorders", method = RequestMethod.GET)
+	public String myorders(HttpServletRequest request, ModelMap model) {
+		
+		User user = (User) request.getSession().getAttribute("user");
+		
+		if (user == null) {
+			return "redirect:/user/signin";
+		} else {
+			List<Orders> orders = ordersDAO.findOrdersByUser(user);
+			model.put("orders", orders);
+		}
+	
+		return "user/myorders";
 	}
 
 }

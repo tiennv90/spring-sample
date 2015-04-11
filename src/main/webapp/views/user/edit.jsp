@@ -42,9 +42,9 @@
             </ul>
             <h3>My Orders</h3>
             <ul class="nav nav-sidebar">
-                <li class="active"><a href="/user/orders">View Orders</a>
+                <li class="active"><a href="/user/myorders">View Orders</a>
                 </li>
-                <li><a href="/user/oders/edit">Edit Orders</a></li>
+                <li><a href="/user/editorders">Edit Orders</a></li>
             </ul>
 
 
