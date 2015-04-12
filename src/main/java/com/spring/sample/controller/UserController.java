@@ -1,7 +1,5 @@
 package com.spring.sample.controller;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,8 +12,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestPart;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.sample.dao.OrdersDAO;
 import com.spring.sample.dao.UserDAO;
@@ -41,8 +37,9 @@ public class UserController extends BaseController {
 
 		User user = (User) request.getSession().getAttribute("user");
 		if (user != null) {
+			
 			if (user.isAdmin()) {
-				return "redirect:/admin";
+				return "redirect:/admin/product";
 			} else {
 				return "redirect:/user/myaccount";
 			}
@@ -111,28 +108,8 @@ public class UserController extends BaseController {
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST)
 	public ResponseEntity<String> editProfile(
-			@ModelAttribute("user") User user,
-			@RequestPart("fileData") MultipartFile multipartfile,
-			HttpServletRequest request) {
+			@ModelAttribute("user") User user, HttpServletRequest request) {
 
-
-		String filePath = request.getSession().getServletContext()
-				.getRealPath("/images/");
-		if (multipartfile != null) {
-			
-			File file = null;
-			try {
-				file = new File(filePath);
-				multipartfile.transferTo(file);
-
-			} catch (IllegalStateException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			
-			user.setImageUrl("/images/" + multipartfile.getName());
-		}
 
 		boolean success = userDAO.update(user);
 

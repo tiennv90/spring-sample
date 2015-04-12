@@ -96,6 +96,7 @@
 								</div>
 		                    </div>
 							<div class="col-md-8">
+								<% if ( request.getSession().getAttribute("user") != null) { %>
 								<div style="float:right;" class="process">
 									<form id="checkout" method="POST"   name="process" onsubmit="return validateFormProcess()" >
 										<div class="form-group">
@@ -108,6 +109,11 @@
 											
 									</form>
 								</div>						
+								<% } else { %>
+								<div style="float:right;" class="process">
+									<a href="/user/signin?url=cart">Please login to checkout</a>
+								</div>
+								<%} %>
 							</div>                  
 		                </div>		                
 		                          		

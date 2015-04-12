@@ -13,12 +13,12 @@
 					jQuery.ajax({
 					    type:"post",
 					    data:str,
-					    url:"/user/create",
+					    url:"/admin/product/addOrEdit",
 					    async: false,
 					    success: function(response){
 					       var result = JSON.parse(response);
 					       if (result.success === true) {
-					    	   window.alert('Product created successfully !');
+					    	   window.alert('Product was updated successfully !');
 					    	   document.location.href="/admin/product";
 					       } else {
 					    	   window.alert(result.errorMessage);
@@ -27,33 +27,69 @@
 					    }
 					});
 				});
-			});
+	
+				jQuery('#upload').submit(function(e) {
+						e.preventDefault();
+						
+						var formData = new FormData($(this)[0]);
+						
+						jQuery.ajax({
+						    type:"POST",
+						    data:formData,
+						    url:"/upload",
+						    async: false,
+						    enctype: 'multipart/form-data',
+						    success: function(response){
+						    	window.alert("image was uploaded successfully!");
+						    	jQuery("#imageUrl").val("/images/" + response);
+						    },
+					        cache: false,
+					        contentType: false,
+					        processData: false				    
+						});
+					});
+				});
 		</script>
 	
-		<div class="col-xs-6 col-xs-offset-3  feedback">
+		<div class="col-sm-6 col-md-6 mainarea">
 			<span style="margin-left: 5px; font-weight: bold; font-size:30px;">Add/Edit Product</span>
-			<form:form modelAttribute="product" style="margin-top: 20px;">
+			<form:form modelAttribute="product" class="form-horizontal">
+				<form:hidden path="id" />
 				<label> Name</label>
 				<form:input path="name" class="form-control" />
-				<br/>
 				<label> Price</label>
 				<form:input class="form-control" path="price"/>
-				<br/>
 				<label> Category</label>
-				<form:select path="category" class="form-control">
-					<form:options items="${categories}" itemValue="id" itemLabel="name"/>
-				</form:select>
-				<br/>
+				<select name="categoryId" class="form-control">
+					<c:forEach var="category" items="${categories}">
+						<c:choose>					
+							<c:when test="${category.id eq product.category.id}">
+								<c:set var="selected" value="selected='selected'"></c:set>
+							</c:when>
+							<c:otherwise>
+								<c:set var="selected" value=""></c:set>
+							</c:otherwise>
+						</c:choose>
+						<option ${selected}  value='${category.id}'>${category.name }</option>
+					</c:forEach>
+				</select>
 				<label>Discount Price</label>
 				<form:input path="discountPrice" class="form-control"/>
-				<br/>
-				<label>Image</label>
-				<input class="form-control" name="fileData" class="form-control" type="file" />
-				<br/>
-				<label></label>
+				<div class="form-group">
+					<form:hidden path="imageUrl" class="form-control"/>
+				</div>
 				<input class="btn btn-default" type="submit" value="Add" name="btn-submit" id="btn-submit"/>
 			</form:form>
 		</div>
-
+		<div class="col-sm-3 col-md-4 mainarea">
+			<h3>&nbsp</h3>
+			<form  method="POST" id="upload"  class="form-horizontal" enctype="multipart/form-data">
+				<div class="form-group">
+					<label>Image</label>
+					<input name="filedata" class="form-control" type="file" />
+				</div>
+				<input class="btn btn-default" type="submit" value="Upload File" name="btn-submit" id="btn-submit"/>
+			</form>
+		</div>
     <!-- //Main -->	
 <%@ include file="/views/footer.jsp" %>

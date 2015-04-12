@@ -39,9 +39,6 @@ public class User implements Serializable {
 	private boolean isAdmin;
 	private String password;
 	
-	@Transient
-	private CommonsMultipartFile fileData;
-	
 	private String imageUrl;
 	
 	@Transient
@@ -141,12 +138,4 @@ public class User implements Serializable {
 		this.imageUrl = imageUrl;
 	}
 
-	public CommonsMultipartFile getFileData() {
-		return fileData;
-	}
-
-	public void setFileData(CommonsMultipartFile fileData) {
-		this.fileData = fileData;
-	}
-	
 }

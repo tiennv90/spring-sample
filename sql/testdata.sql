@@ -123,30 +123,6 @@ INSERT INTO `orders_product` VALUES (2,1),(13,11),(14,6),(15,5),(15,11),(15,19);
 /*!40000 ALTER TABLE `orders_product` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `paymentmethod`
---
-
-DROP TABLE IF EXISTS `paymentmethod`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `paymentmethod` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `cvv` varchar(255) DEFAULT NULL,
-  `number` varchar(255) DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `paymentmethod`
---
-
-LOCK TABLES `paymentmethod` WRITE;
-/*!40000 ALTER TABLE `paymentmethod` DISABLE KEYS */;
-/*!40000 ALTER TABLE `paymentmethod` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `product`

@@ -47,7 +47,7 @@
                 <div class="row">
                     <div class="col-sm-6 col-md-3">
                         <div class="thumbnail">
-                            <img src="images/product/clothing/05.jpg" alt="">
+                            <img src="/images/product/clothing/05.jpg" alt="">
                             <div class="caption">
                                 <h3>Sleep Socks with Non-Skid Soles</h3>
                                 <p>$7.95  &nbsp; &nbsp; &nbsp;  <strike>$16.95</strike></p>
@@ -59,7 +59,7 @@
 
                     <div class="col-sm-6 col-md-3">
                         <div class="thumbnail">
-                            <img src="images/product/health/05.jpg" alt="">
+                            <img src="/images/product/health/05.jpg" alt="">
                             <div class="caption">
                                 <h3>Product Name</h3>
                                 <h3>Bed Buddy Hot and Cold Pack</h3>
@@ -72,7 +72,7 @@
 
                     <div class="col-sm-6 col-md-3">
                         <div class="thumbnail">
-                            <img src="images/product/bath/05.jpg" alt="">
+                            <img src="/images/product/bath/05.jpg" alt="">
                             <div class="caption">
                                 <h3>Extra Wide Tall-Ette Toilet Seat with Arms</h3>
                                 <p>$50.95  &nbsp; &nbsp; &nbsp;  <strike>$100.95</strike></p>
@@ -84,7 +84,7 @@
 
                     <div class="col-sm-6 col-md-3">
                         <div class="thumbnail">
-                            <img src="images/product/mobility/05.jpg" alt="">
+                            <img src="/images/product/mobility/05.jpg" alt="">
                             <div class="caption">
                                    <h3>Handirail Bedside Assistant Bed Safety Rail</h3>
                                 <p>$40.95 &nbsp; &nbsp; &nbsp;  <strike>$80.95</strike></p>

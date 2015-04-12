@@ -84,6 +84,20 @@ public class AdminController {
 		
 	}
 	
+	@RequestMapping(value="/product/delete", method = RequestMethod.GET)
+	public String removeProduct(@RequestParam("productId") Integer productId, HttpServletRequest request) {
+		
+		User user = (User) request.getSession().getAttribute("user");
+		
+		if (user != null && user.isAdmin()) {
+			
+			productDAO.remove(productId);
+			
+		}
+		
+		return "redirect:/admin/product";
+	}
+	
 	@RequestMapping(value="/product/edit", method = RequestMethod.GET)
 	public String editProduct(@RequestParam("productId") Integer productId, HttpServletRequest request, Model model) {
 		
@@ -106,32 +120,47 @@ public class AdminController {
 		
 	}
 	
+	
 	@RequestMapping(value = "/product/addOrEdit", method = RequestMethod.POST)
-	public ResponseEntity<String> creatProduct(HttpServletRequest request,
-			@ModelAttribute("product") Product product) {
+	public ResponseEntity<String> addOrEdit(HttpServletRequest request,
+			@ModelAttribute("product") Product product, @RequestParam("categoryId") Integer categoryId) {
 
-//		User oldUser = userDAO.findByUserName(user.getUserName());
-//
-//		JsonLogin login = new JsonLogin();
-//		if (oldUser == null) {
-//			user.setEmail(user.getUserName());
-//			user.setPassword(Utils.getHashMD5(user.getPassword()));
-//			boolean isSaved = userDAO.save(user);
-//			if (isSaved == false) {
-//				login.setErrorMessage("There's an internal server error");
-//			} else {
-//				user = userDAO.findByUserName(user.getUserName());
-//				request.getSession().setAttribute("user", user);
-//			}
-//			login.setSuccess(isSaved);
-//
-//		} else {
-//			login.setErrorMessage("The email already existed. Please choose another email.");
-//			login.setSuccess(false);
-//		}
-//
+		boolean isSaved = false;
+		Category c = categoryDAO.findById(categoryId);
+		if (c != null) {
+			product.setCategory(c);
+		}
+		
+		if (product.getId() <= 0) {
+			isSaved = productDAO.save(product);
+		} else {
+			Product oldProduct = productDAO.findById(product.getId());
+			oldProduct.setName(product.getName());
+			oldProduct.setCategory(product.getCategory());
+			oldProduct.setPrice(product.getPrice());
+			
+			if (product.getImageUrl() != null && !product.getImageUrl().isEmpty()) {
+				oldProduct.setImageUrl(product.getImageUrl());
+			}
+			
+			oldProduct.setDiscountPrice(product.getDiscountPrice());
+			
+			isSaved = productDAO.update(oldProduct);
+		}
+
+		isSaved = true;
+		JsonLogin login = new JsonLogin();
+		if (isSaved) {
+			
+			login.setSuccess(true);
+
+		} else {
+			login.setErrorMessage("The email already existed. Please choose another email.");
+			login.setSuccess(false);
+		}
+
 		return new ResponseEntity<String>(new JSONSerializer().exclude(
-				"*.class").deepSerialize(""), HttpStatus.OK);
+				"*.class").deepSerialize(login), HttpStatus.OK);
 	}
 	
 	@RequestMapping(value="/product/add", method = RequestMethod.GET)

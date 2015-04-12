@@ -52,5 +52,11 @@ public class Category implements Serializable {
 	public void setProducts(List<Product> products) {
 		this.products = products;
 	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return this.getName();
+	}
 
 }
