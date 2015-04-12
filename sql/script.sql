@@ -114,6 +114,9 @@ CREATE TABLE `orders_product` (
 
 INSERT INTO `orders_product` VALUES (5, 5);
 INSERT INTO `orders_product` VALUES (6, 8);
+INSERT INTO `orders_product` VALUES (1, 3);
+INSERT INTO `orders_product` VALUES (2, 1);
+INSERT INTO `orders_product` VALUES (3, 4);
 
 -- --------------------------------------------------------
 
