@@ -41,7 +41,7 @@
 				    enctype: 'multipart/form-data',
 				    success: function(response){
 				    	window.alert("image was uploaded successfully!");
-				    	jQuery("#imageUrl").val(response);
+				    	jQuery("#imageUrl").val("/images/" + response);
 				    },
 			        cache: false,
 			        contentType: false,

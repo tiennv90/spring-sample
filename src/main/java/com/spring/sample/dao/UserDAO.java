@@ -102,7 +102,7 @@ public class UserDAO {
 				obj.setPassword(Utils.getHashMD5(user.getPassword()));
 			}
 			if (user.getImageUrl() != null && !user.getImageUrl().isEmpty()) {
-				obj.setImageUrl("/images/" + user.getImageUrl());
+				obj.setImageUrl(user.getImageUrl());
 			}
 			session.update(obj);
 			transaction.commit();
