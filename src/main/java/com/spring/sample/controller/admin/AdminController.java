@@ -6,17 +6,27 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.spring.sample.dao.CategoryDAO;
 import com.spring.sample.dao.FeedbackDAO;
 import com.spring.sample.dao.ProductDAO;
 import com.spring.sample.dao.UserDAO;
+import com.spring.sample.model.Category;
 import com.spring.sample.model.Feedback;
 import com.spring.sample.model.Product;
 import com.spring.sample.model.User;
+import com.spring.sample.model.json.JsonLogin;
+import com.spring.sample.util.Utils;
+
+import flexjson.JSONSerializer;
 
 @Controller
 @RequestMapping(value="/admin")
@@ -31,6 +41,9 @@ public class AdminController {
 	@Autowired
 	private UserDAO userDAO;
 	
+	@Autowired
+	private CategoryDAO categoryDAO;
+	
 	@RequestMapping(value="/feedback", method = RequestMethod.GET)
 	public String feedback(HttpServletRequest request, Model model) {
 		
@@ -42,7 +55,6 @@ public class AdminController {
 			List<Feedback> list = feedbackDAO.findAll(0, 0);
 			
 			model.addAttribute("feedbacks", list);
-			model.addAttribute("active", "feedback");
 			
 			return "admin/feedback";
 
@@ -63,9 +75,79 @@ public class AdminController {
 			List<Product> list = productDAO.findAll(0, 0);
 			
 			model.addAttribute("products", list);
-			model.addAttribute("active", "product");
 			
 			return "admin/product/view";
+
+		}
+		
+		return "redirect:/";
+		
+	}
+	
+	@RequestMapping(value="/product/edit", method = RequestMethod.GET)
+	public String editProduct(@RequestParam("productId") Integer productId, HttpServletRequest request, Model model) {
+		
+		User user = (User) request.getSession().getAttribute("user");
+		
+		if (user != null && user.isAdmin()) {
+			
+				
+			List<Category> list = categoryDAO.findAll(0, 0);
+			Product p = productDAO.findById(productId);
+			
+			model.addAttribute("categories", list);
+			model.addAttribute("product", p);
+			
+			return "admin/product/edit";
+
+		}
+		
+		return "redirect:/";
+		
+	}
+	
+	@RequestMapping(value = "/product/addOrEdit", method = RequestMethod.POST)
+	public ResponseEntity<String> creatProduct(HttpServletRequest request,
+			@ModelAttribute("product") Product product) {
+
+//		User oldUser = userDAO.findByUserName(user.getUserName());
+//
+//		JsonLogin login = new JsonLogin();
+//		if (oldUser == null) {
+//			user.setEmail(user.getUserName());
+//			user.setPassword(Utils.getHashMD5(user.getPassword()));
+//			boolean isSaved = userDAO.save(user);
+//			if (isSaved == false) {
+//				login.setErrorMessage("There's an internal server error");
+//			} else {
+//				user = userDAO.findByUserName(user.getUserName());
+//				request.getSession().setAttribute("user", user);
+//			}
+//			login.setSuccess(isSaved);
+//
+//		} else {
+//			login.setErrorMessage("The email already existed. Please choose another email.");
+//			login.setSuccess(false);
+//		}
+//
+		return new ResponseEntity<String>(new JSONSerializer().exclude(
+				"*.class").deepSerialize(""), HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/product/add", method = RequestMethod.GET)
+	public String addProduct(HttpServletRequest request, Model model) {
+		
+		User user = (User) request.getSession().getAttribute("user");
+		
+		if (user != null && user.isAdmin()) {
+			
+				
+			List<Category> list = categoryDAO.findAll(0, 0);
+			
+			model.addAttribute("categories", list);
+			model.addAttribute("product", new Product());
+			
+			return "admin/product/edit";
 
 		}
 		
@@ -92,9 +174,7 @@ public class AdminController {
 			
 			users.removeAll(listToRemove);
 			
-			model.addAttribute("active", "feedback");
 			model.addAttribute("users", users);
-			model.addAttribute("active", "user");
 			
 			return "admin/user";
 

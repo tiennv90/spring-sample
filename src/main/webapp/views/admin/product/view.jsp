@@ -2,7 +2,7 @@
 <%@ include file="/views/admin/header.jsp" %>
 
     <div id="main">
-    <p class="lead"> Products </p>
+    <p class="lead"> Products | <a href="/admin/product/add" class="btn btn-default btn-sm active" role="button">Add New Product</a></p>
 		<table class="table table-bordered">
 				<tr id="header">
 					<th>ID</th>
@@ -28,8 +28,8 @@
 								$ ${p.discountPrice}
 							</c:if>
 						</td>
-						<td><a href="#" class="btn btn-default btn-sm active" role="button">Edit</a>
-						<a href="#" class="btn btn-default btn-sm active" role="button">Delete</a></td>		
+						<td><a href="/admin/product/edit?productId=${p.id}" class="btn btn-default btn-sm active" role="button">Edit</a>
+						<a href="/admin/product/delete?productId=${p.id}" class="btn btn-default btn-sm active" role="button">Delete</a></td>		
 					</tr>			
 				</c:forEach>			
 		</table>
