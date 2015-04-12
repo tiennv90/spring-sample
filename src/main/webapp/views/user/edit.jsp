@@ -44,7 +44,6 @@
             <ul class="nav nav-sidebar">
                 <li class="active"><a href="/user/myorders">View Orders</a>
                 </li>
-                <li><a href="/user/editorders">Edit Orders</a></li>
             </ul>
 
 

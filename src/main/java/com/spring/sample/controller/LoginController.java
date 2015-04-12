@@ -34,7 +34,7 @@ public class LoginController {
 			jsonLogin.setSuccess(true);
 			if (user.isAdmin()) {
 				
-				jsonLogin.setRedirectUrl("/admin");
+				jsonLogin.setRedirectUrl("/admin/product");
 			} else {
 				
 				jsonLogin.setRedirectUrl("/");

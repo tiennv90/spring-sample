@@ -43,20 +43,10 @@
                     <ul class="nav navbar-nav pull-right">
                     <%
                     	User user = (User) request.getSession().getAttribute("user");
-                    	if (user == null) {
+                    	if (user != null) {
                     %>
-                        <li><a href="/user/signin">Sign In</a>
-                        </li>
-                        <li><a href="/user/create">Create Account</a>
-                        </li>
-                        <% } else { %>
-                        <li><a href="/user/myaccount">My Account</a>
-                        </li>
-                        <li><a href="/login/logout">Logout</a>
-                        </li>                        
+							<li><a href="/login/logout">Logout</a>                     
                         <% } %>
-                        <li><a href="/help">Help</a>
-                        </li>
                     </ul>
                     <!-- /.nav navbar-nav pull-right -->
                 </div>
@@ -84,16 +74,9 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-	                <c:forEach var="category" items="${categories}">
-		                <c:choose>
-		                	<c:when test="${currentCategory eq  category.name}">
-		                	 	<li class="active"><a href="/category/${category.id}">${category.name}</a></li>
-		                	</c:when>
-		                	<c:otherwise>
-		                		<li><a href="/category/${category.id}">${category.name}</a></li>
-		                	</c:otherwise>
-		                </c:choose>	 
-	                </c:forEach>
+					<li><a  href="/admin/product">Products</a></li>
+					<li><a  href="/admin/feedback">Feedback</a></li>
+					<li><a  href="/admin/user">User</a></li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
