@@ -110,5 +110,20 @@ public class ProductDAO {
 		}
 		return false;
 	}
+
+	public List<Product> findDealofTheDay() {
+		
+		Session session = sessionFactory.openSession();
+		try {
+			Query query = session.createQuery("from Product p where p.dealOfTheDay = true");
+			
+			query.setMaxResults(4);
+			
+			return query.list();
+			
+		} finally {
+			session.close();
+		}
+	}
 	
 }

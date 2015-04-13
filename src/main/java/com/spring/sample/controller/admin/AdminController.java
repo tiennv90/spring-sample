@@ -123,7 +123,7 @@ public class AdminController {
 	
 	@RequestMapping(value = "/product/addOrEdit", method = RequestMethod.POST)
 	public ResponseEntity<String> addOrEdit(HttpServletRequest request,
-			@ModelAttribute("product") Product product, @RequestParam("categoryId") Integer categoryId) {
+			@ModelAttribute("product") Product product, @RequestParam("categoryId") Integer categoryId, @RequestParam("dealOfTheDay") boolean dealOfTheDay) {
 
 		boolean isSaved = false;
 		Category c = categoryDAO.findById(categoryId);
@@ -132,13 +132,14 @@ public class AdminController {
 		}
 		
 		if (product.getId() <= 0) {
+			product.setDealOfTheDay(dealOfTheDay);
 			isSaved = productDAO.save(product);
 		} else {
 			Product oldProduct = productDAO.findById(product.getId());
 			oldProduct.setName(product.getName());
 			oldProduct.setCategory(product.getCategory());
 			oldProduct.setPrice(product.getPrice());
-			
+			oldProduct.setDealOfTheDay(dealOfTheDay);
 			if (product.getImageUrl() != null && !product.getImageUrl().isEmpty()) {
 				oldProduct.setImageUrl(product.getImageUrl());
 			}

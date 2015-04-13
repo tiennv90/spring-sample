@@ -73,6 +73,21 @@
 						<option ${selected}  value='${category.id}'>${category.name }</option>
 					</c:forEach>
 				</select>
+				<label>Deal Of The Day</label>
+				<select name="dealOfTheDay" class="form-control">
+					<c:choose>					
+						<c:when test="${product.dealOfTheDay eq true}">
+								<c:set var="selectedtrue" value="selected='selected'"></c:set>
+								<c:set var="selectedfalse" value=""></c:set>
+						</c:when>
+						<c:otherwise>
+								<c:set var="selectedtrue" value=""></c:set>
+								<c:set var="selectedfalse" value="selected='selected'"></c:set>
+						</c:otherwise>
+					</c:choose>
+					<option ${selectedtrue}  value='true'>true</option>
+					<option ${selectedfalse}  value='false'>false</option>
+				</select>				
 				<label>Discount Price</label>
 				<form:input path="discountPrice" class="form-control"/>
 				<div class="form-group">

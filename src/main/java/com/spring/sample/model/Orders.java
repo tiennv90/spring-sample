@@ -43,7 +43,8 @@ public class Orders {
 	
 	private String cardNumber;
 	private String cvv;
-	
+	private String cardexpiresMonth;
+	private String cardexpiresYear;
 	private String status = "Waiting";
 	
 	public int getId() {
@@ -100,6 +101,22 @@ public class Orders {
 
 	public void setCvv(String cvv) {
 		this.cvv = cvv;
+	}
+
+	public String getCardexpiresMonth() {
+		return cardexpiresMonth;
+	}
+
+	public void setCardexpiresMonth(String cardexpiresMonth) {
+		this.cardexpiresMonth = cardexpiresMonth;
+	}
+
+	public String getCardexpiresYear() {
+		return cardexpiresYear;
+	}
+
+	public void setCardexpiresYear(String cardexpiresYear) {
+		this.cardexpiresYear = cardexpiresYear;
 	}
 	
 }

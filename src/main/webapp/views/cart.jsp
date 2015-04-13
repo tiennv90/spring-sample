@@ -14,8 +14,8 @@
 				document.forms["process"]["cvvnumber"].focus();
 				return false;
 			}
-			if (!isNaN(cvvnumber)) {
-				alert("CVV Number must be a Character");
+			if (isNaN(cvvnumber)) {
+				alert("CVV Number must be a Number");
 				document.forms["process"]["cvvnumber"].focus();
 				return false;
 			}
@@ -49,7 +49,7 @@
 			    async: false,
 			    success: function(response){
 			    	document.location.href="/";
-			    	window.alert("Thanks for your interested in our products");
+			    	window.alert("Thank you for shopping with us. Your orders will be delivered withing 3 business days");
 			    }
 			});	
 		}
@@ -77,7 +77,7 @@
 			                            <div class="caption">
 			                                <h3>${product.name }</h3>
 			                                <p>$ ${product.price }</p>
-			                                <p><a href="/cart/remove?productId=${product.id }" class="btn btn-primary" role="button">Cancel</a>
+			                                <p><a href="/cart/remove?productId=${product.id }" onclick="return alert('Product has been removed')" class="btn btn-primary" role="button">Cancel</a>
 			                                </p>
 			                            </div>
 			                        </div>
@@ -104,6 +104,10 @@
 											<input id="cardnumber" class="form-control" placeholder="card number" name="cardnumber" type="text" value=""/><br/>
 											<label for="cvvnumber">CVV</label>
 											<input id="cvvnumber" class="form-control" placeholder="cvv" name="cvvnumber" style="width: 50px;" type="text" value=""/>
+											<label for="cardexpiresMonth">Month</label>
+											<input id="cardexpiresMonth" class="form-control"  name="cardexpiresMonth" type="text" value=""/>
+											<label for="cardexpiresYear">Year</label>
+											<input id="cardexpiresYear" class="form-control" name="cardexpiresYear" type="text" value=""/>											
 										</div>	
 										<input id="process" name="process" style="margin-top: 5px;" type="submit" value="Checkout Proccess"/>
 											

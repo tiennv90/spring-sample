@@ -100,7 +100,8 @@ public class CartController extends BaseController {
 	
 	@RequestMapping(value = "/checkoutprocess", method = RequestMethod.POST)
 	public ResponseEntity<String> createUser(HttpServletRequest request,
-			@RequestParam("cardnumber") String cardNumber, @RequestParam("cvvnumber") String cvv) {
+			@RequestParam("cardnumber") String cardNumber, @RequestParam("cvvnumber") String cvv,
+			@RequestParam("cardexpiresMonth") String cardexpiresMonth, @RequestParam("cardexpiresYear") String cardexpiresYear) {
 		
 		Orders orders = (Orders) request.getSession().getAttribute("currentOrders");
 		User currentUser = (User) request.getSession().getAttribute("user");
@@ -112,6 +113,8 @@ public class CartController extends BaseController {
 			orders.setCvv(cvv);
 			orders.setOrderDate(new Date()); 
 			orders.setUser(currentUser);
+			orders.setCardexpiresMonth(cardexpiresMonth);
+			orders.setCardexpiresYear(cardexpiresYear);
 			
 			boolean isSaved = ordersDAO.save(orders);
 			result = "{success :" + isSaved + "}";
