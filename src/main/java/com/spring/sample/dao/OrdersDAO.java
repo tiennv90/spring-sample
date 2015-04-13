@@ -105,9 +105,9 @@ public class OrdersDAO {
 					obj.setCvv(order.getCvv());
 				}
 				
-				if (order.getProducts() != null && !order.getProducts().isEmpty()) {
-					obj.setProducts(order.getProducts());
-				}
+				
+				obj.setProducts(order.getProducts());
+				
 				
 				session.update(obj);
 			}

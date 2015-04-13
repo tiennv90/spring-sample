@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ include file="/views/header.jsp" %>
 
     <div class="container">
@@ -19,8 +20,9 @@
         
         <div class="col-sm-9 col-md-10 mainarea">
 		    <div id="main">
-		    <c:choose>
-				<c:when test="${not empty orders}">
+		    	<c:if test="${emptyOrder eq true }">
+		    		<h3>There are no orders</h3>
+		    	</c:if>
 					<c:forEach var="order" items="${orders }">
 					  <c:set var="products" value="${order.products}"/>
 					  <c:if test="${not empty  products}">
@@ -39,7 +41,7 @@
 						                          <div class="caption">
 						                              <h3 style="font-size: 13px;">${product.name }</h3>
 						                              <p style="color: #A52222;">$ ${product.price }</p>
-						                              <p><a href="/orders/${order.id}/removeproduct?productId=${product.id }" class="btn btn-primary" role="button">Remove</a>
+						                              <p><a onclick="return alert('Product has been removed')" href="/orders/${order.id}/removeproduct?productId=${product.id}" class="btn btn-primary" role="button">Remove</a>
 						                          </div>
 						                      </div>
 						                  </div>                	   
@@ -51,11 +53,6 @@
 							<hr style="width: 95%; background-color: #A52222; height: 2px; border: 0;">
 						</c:if>
 					</c:forEach>
-				</c:when>
-				<c:otherwise>
-					<h3>There are no orders</h3>
-				</c:otherwise>
-			</c:choose>	
 		 	</div>        
         </div>
             	

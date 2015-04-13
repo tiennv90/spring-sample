@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.spring.sample.dao.OrdersDAO;
 import com.spring.sample.dao.UserDAO;
 import com.spring.sample.model.Orders;
+import com.spring.sample.model.Product;
 import com.spring.sample.model.User;
 import com.spring.sample.model.json.JsonLogin;
 import com.spring.sample.util.Utils;
@@ -155,6 +156,17 @@ public class UserController extends BaseController {
 			return "redirect:/user/signin";
 		} else {
 			List<Orders> orders = ordersDAO.findOrdersByUser(user);
+			
+			boolean emptyOrder = true;
+			for (Orders order : orders) {
+				for (Product p : order.getProducts()) {
+					if (p != null && p.getId() > 0) {
+						emptyOrder = false;
+					}
+				}
+			}
+			
+			model.put("emptyOrder", emptyOrder);
 			model.put("orders", orders);
 		}
 	
