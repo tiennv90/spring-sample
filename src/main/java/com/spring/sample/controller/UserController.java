@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.spring.sample.dao.OrdersDAO;
+import com.spring.sample.dao.ProductDAO;
 import com.spring.sample.dao.UserDAO;
 import com.spring.sample.model.Orders;
 import com.spring.sample.model.Product;
@@ -33,6 +34,9 @@ public class UserController extends BaseController {
 	@Autowired
 	private OrdersDAO ordersDAO;
 	
+	@Autowired
+	private ProductDAO productDAO;
+	
 	@RequestMapping(value = "/signin", method = RequestMethod.GET)
 	public String signin(HttpServletRequest request, ModelMap model) {
 
@@ -46,6 +50,11 @@ public class UserController extends BaseController {
 			}
 
 		}
+		
+		List<Product> dealoftheday = productDAO.findDealofTheDay();
+		
+		model.addAttribute("products", dealoftheday);
+		
 		return "user/signin";
 	}
 
@@ -61,6 +70,10 @@ public class UserController extends BaseController {
 			}
 
 		}
+		
+		List<Product> dealoftheday = productDAO.findDealofTheDay();
+		
+		model.addAttribute("products", dealoftheday);
 
 		model.put("user", new User());
 		return "user/createAccount";
