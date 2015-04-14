@@ -23,6 +23,7 @@ public class CategoryController extends BaseController {
 			ModelMap model) {
 
 		Category category = categoryDAO.findById(categoryId);
+		
 		model.put("category", category);
 		model.put("currentCategory", category.getName());
 		

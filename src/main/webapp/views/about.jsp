@@ -21,7 +21,7 @@
         <section class="products-list">
             <div class="container">
                 <!-- Heading Starts -->
-                <h2 class="product-head">Deal of The Day</h2>
+                <h2 class="product-head">SPECIALS PRODUCTS</h2>
                 <!-- Heading Ends -->
                 <!-- Products Row Starts -->
                 <div class="row">

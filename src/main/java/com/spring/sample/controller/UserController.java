@@ -156,6 +156,11 @@ public class UserController extends BaseController {
 			return "redirect:/user/signin";
 
 		}
+		
+		List<Product> dealoftheday = productDAO.findDealofTheDay();
+		
+		model.addAttribute("products", dealoftheday);
+		
 		model.put("user", user);
 		return "user/myAccount";
 	}
