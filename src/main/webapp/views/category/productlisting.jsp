@@ -10,7 +10,7 @@
                 <!-- Products Row Starts -->
                 <div class="row">
 					<c:forEach var="product" items="${category.products }" varStatus="loop">
-						<c:if test="${loop.index < 4 })">
+						<c:if test="${loop.count <= 4 }">
 				        	<div class="col-sm-6 col-md-3">
 			                    <div class="thumbnail">
 			                        <img src="${product.imageUrl }" alt="${product.name }">
