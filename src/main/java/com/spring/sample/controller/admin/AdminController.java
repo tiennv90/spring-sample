@@ -215,7 +215,7 @@ public class AdminController {
 					}
 					
 					if (isRemove) {
-						listToRemove.add(user);
+						listToRemove.add(u);
 					}
 				}
 			}
