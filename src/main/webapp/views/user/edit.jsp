@@ -95,7 +95,8 @@
                     <form:input path="address" id="address" placeholder="Address" class="form-control"/>
                 </div>
 				<div class="form-group">
-					<form:hidden path="imageUrl" class="form-control"/>
+					<label for="address">Image</label>
+					<form:input path="imageUrl" class="form-control"/>
 				</div>
 				<div class="form-group">
 					<label></label>
@@ -104,6 +105,7 @@
             </form:form>
             
 		</div>
+		<!--  
 		<div class="col-sm-3 col-md-4 mainarea">
 			<h3>&nbsp</h3>
 			<form  method="POST" id="upload"  class="form-horizontal" enctype="multipart/form-data">
@@ -113,7 +115,7 @@
 				</div>
 				<input class="btn btn-default" type="submit" value="Upload File" name="btn-submit" id="btn-submit"/>
 			</form>
-		</div>
+		</div> -->
     </div>
     <!--  -->
     <!--  -->
