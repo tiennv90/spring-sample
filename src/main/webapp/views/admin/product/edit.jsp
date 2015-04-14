@@ -91,11 +91,13 @@
 				<label>Discount Price</label>
 				<form:input path="discountPrice" class="form-control"/>
 				<div class="form-group">
-					<form:hidden path="imageUrl" class="form-control"/>
+					<label>Image</label>
+					<form:input path="imageUrl" class="form-control"/>
 				</div>
 				<input class="btn btn-default" type="submit" value="Add" name="btn-submit" id="btn-submit"/>
 			</form:form>
 		</div>
+		<!--  
 		<div class="col-sm-3 col-md-4 mainarea">
 			<h3>&nbsp</h3>
 			<form  method="POST" id="upload"  class="form-horizontal" enctype="multipart/form-data">
@@ -106,5 +108,6 @@
 				<input class="btn btn-default" type="submit" value="Upload File" name="btn-submit" id="btn-submit"/>
 			</form>
 		</div>
+		-->
     <!-- //Main -->	
 <%@ include file="/views/footer.jsp" %>
