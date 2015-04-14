@@ -16,7 +16,7 @@
 		                        <img src="${product.imageUrl }" alt="${product.name }">
 		                        <div class="caption">
 		                            <h3>${product.name }</h3>
-		                            <p>$ ${product.price }</p>
+		                            <p>$ ${product.discountPrice} &nbsp; &nbsp; &nbsp;  <strike>$ ${product.price }</strike></p>
 		                            <p><a href="/cart/add?productId=${product.id}" class="btn btn-primary" role="button">Buy</a>
 		                            </p>
 		                        </div>
