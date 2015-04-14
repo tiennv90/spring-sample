@@ -21,6 +21,7 @@ import com.spring.sample.dao.ProductDAO;
 import com.spring.sample.dao.UserDAO;
 import com.spring.sample.model.Category;
 import com.spring.sample.model.Feedback;
+import com.spring.sample.model.Orders;
 import com.spring.sample.model.Product;
 import com.spring.sample.model.User;
 import com.spring.sample.model.json.JsonLogin;
@@ -199,6 +200,23 @@ public class AdminController {
 			for (User u : users) {
 				if (u.getOrders() == null || u.getOrders().isEmpty()) {
 					listToRemove.add(u);
+				} else {
+					boolean isRemove = true;
+					for (Orders order : u.getOrders()) {
+						
+						if (order.getProducts() != null && order.getProducts().size() > 0) {
+							isRemove = false;
+							break;
+						}
+						
+						if (isRemove == false) {
+							break;
+						}
+					}
+					
+					if (isRemove) {
+						listToRemove.add(user);
+					}
 				}
 			}
 			
