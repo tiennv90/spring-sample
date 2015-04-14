@@ -42,7 +42,11 @@ public class CartController extends BaseController {
 			double total = 0;
 			
 			for (Product p : order.getProducts()) {
-				total += p.getPrice();
+				if (p.getDiscountPrice() != 0) {
+					total += p.getDiscountPrice();
+				} else {
+					total += p.getPrice();
+				}
 			}
 			
 			model.addAttribute("orders", order);

@@ -76,7 +76,14 @@
 			                            <img style="float:left; width: 150px;" src="${product.imageUrl }" alt="${product.name }">
 			                            <div class="caption">
 			                                <h3>${product.name }</h3>
-			                                <p>$ ${product.price }</p>
+			                                <c:choose>
+				                                <c:when test="${not empty product.discountPrice }">
+					                                <p>$ ${product.discountPrice }</p>
+				                                </c:when>
+				                                <c:otherwise>
+				                                	<p>$ ${product.price }</p>
+				                                </c:otherwise>
+			                                </c:choose>
 			                                <p><a href="/cart/remove?productId=${product.id }" onclick="return alert('Product has been removed')" class="btn btn-primary" role="button">Cancel</a>
 			                                </p>
 			                            </div>
