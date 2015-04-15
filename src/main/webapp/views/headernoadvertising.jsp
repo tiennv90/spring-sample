@@ -52,7 +52,7 @@
                         <% } else {
                         	if (user.isAdmin()) {
                         		%>
-                        		<li><a href="/admin/product">My Account</a>
+                        		<li><a href="/admin/product">Administration</a>
                         		<% 
                         	}
                         %>
