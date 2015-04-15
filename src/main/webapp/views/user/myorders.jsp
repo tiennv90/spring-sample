@@ -33,7 +33,6 @@
 								  | <a style=" color: #777777; font-weight:bold;" href="/orders/remove?orderId=${order.id}">Cancel Order</a>
 					              <!-- Heading Ends -->
 					              <!-- Products Row Starts -->     
-					              <c:set var='numberOfrow' value="${row }" />
 					               <div class="row">
 					               	   <c:forEach var="product" items="${products}">
 						                  <div class="col-xs-6 col-sm-3">
