@@ -49,7 +49,13 @@
                         </li>
                         <li><a href="/user/create">Create Account</a>
                         </li>
-                        <% } else { %>
+                        <% } else {
+                        	if (user.isAdmin()) {
+                        		%>
+                        		<li><a href="/admin/product">My Account</a>
+                        		<% 
+                        	}
+                        %>
                         <li><a href="/user/myaccount">My Account</a>
                         </li>
                         <li><a href="/login/logout">Logout</a>

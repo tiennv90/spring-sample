@@ -35,8 +35,8 @@
 					              <!-- Products Row Starts -->      
 					               <div class="row">
 					               	   <c:forEach var="product" items="${products}">
-						                  <div class="col-sm-6 col-md-3">
-						                      <div style="width: 150px;" class="thumbnail">
+						                  <div class="col-sm-6 col-md-2">
+						                      <div class="thumbnail">
 						                          <img src="${product.imageUrl}" alt="${product.name }">
 						                          <div class="caption">
 						                              <h3 style="font-size: 13px;">${product.name }</h3>
