@@ -32,10 +32,11 @@
 					              <span style="font-weight: bold; color: #A52222; font-size: 20px;" class="product-head">ID Order: ${order.id} </span>
 								  | <a style=" color: #777777; font-weight:bold;" href="/orders/remove?orderId=${order.id}">Cancel Order</a>
 					              <!-- Heading Ends -->
-					              <!-- Products Row Starts -->      
+					              <!-- Products Row Starts -->     
+					              <c:set var='numberOfrow' value="${row }" />
 					               <div class="row">
 					               	   <c:forEach var="product" items="${products}">
-						                  <div class="col-sm-6 col-md-2">
+						                  <div class="col-xs-6 col-sm-3">
 						                      <div class="thumbnail">
 						                          <img src="${product.imageUrl}" alt="${product.name }">
 						                          <div class="caption">
@@ -46,8 +47,10 @@
 						                      </div>
 						                  </div>                	   
 					               	   </c:forEach>
-					              		
-					               </div>  	
+					               </div> 
+					                	
+					                <div class="row">
+					                </div>
 					          </div>
 					        </section>  		
 							<hr style="width: 95%; background-color: #A52222; height: 2px; border: 0;">
