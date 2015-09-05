@@ -1,6 +1,5 @@
 package com.spring.sample.dao;
 
-import java.awt.CardLayout;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.sample.model.Orders;
 import com.spring.sample.model.User;
-import com.spring.sample.util.Utils;
 
 @Repository("odersDAO")
 public class OrdersDAO {
