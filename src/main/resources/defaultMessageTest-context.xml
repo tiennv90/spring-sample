@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   					http://www.springframework.org/schema/beans/spring-beans.xsd">
+	   					
+	<bean id="message" class="com.spring.sample.training.ioc.DefaultMessage"/>
+	
+	<bean id="constructorMessage" class="com.spring.sample.training.ioc.ConstructorMessage">
+		<constructor-arg value="Constructor message example."/>
+	</bean>	   	
+	
+	<bean id="springMessage" class="java.lang.String">
+		<constructor-arg value="Welcome to Spring framework"/>
+	</bean>	
+	
+	<bean id="message2" class="com.spring.sample.training.ioc.DefaultMessage">
+		<property name="message" ref="springMessage" />
+	</bean>			   
+</beans>

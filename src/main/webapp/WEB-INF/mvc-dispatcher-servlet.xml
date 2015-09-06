@@ -17,6 +17,11 @@
 	
 	<import resource="classpath*:datasource.xml" />
 	
+	<bean id="recorder" class="com.spring.sample.training.vote.LocalVoteRecorder" />
+	
+	<bean id="votingBooth" class="com.spring.sample.training.vote.VotingBooth">
+		<property name="voteRecorder" ref="recorder" />
+	</bean>
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
