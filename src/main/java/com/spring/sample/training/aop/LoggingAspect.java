@@ -2,6 +2,7 @@ package com.spring.sample.training.aop;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 
 @Aspect
 public class LoggingAspect {
@@ -11,13 +12,27 @@ public class LoggingAspect {
 		System.out.println("Advice run. Get method called");
 	}
 	
-	@Before("execution (public * get*())")
+	@Before("allGetters()")
 	public void loggingGlobalAdvice() {
-		System.out.println("Global Advice run. Get method called");
+		System.out.println("Global Advice run. Get method called (point cut)");
 	}
 	
-	@Before("execution ( * get*())")
+	@Before("allGetters()")
 	public void loggingSecondAdvice() {
-		System.out.println("Second advice executed");
+		System.out.println("Second advice executed (point cut)");
 	}
+	
+	@Before("allShapeMethods()")
+	public void loggingShapeMethods() {
+		System.out.println("All shape methods executed (point cut)");
+	}
+	
+	@Pointcut("execution ( * get*())")
+	public void allGetters() {}
+	
+	@Pointcut("execution (* com.spring.sample.training.aop.model.Shape.*(..))")
+	public void allShapeMethods() {}
+	
+	@Pointcut("within(com.spring.sample.training.aop.model.Shape+)")
+	public void allShapeMethods2() {}
 }
