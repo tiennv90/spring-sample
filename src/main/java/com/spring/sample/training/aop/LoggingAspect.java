@@ -17,9 +17,9 @@ public class LoggingAspect {
 		System.out.println("Global Advice run. Get method called (point cut)");
 	}
 	
-	@Before("allGetters()")
+	@Before("allGetters() && allShapeMethods()")
 	public void loggingSecondAdvice() {
-		System.out.println("Second advice executed (point cut)");
+		System.out.println("Second advice executed (point cut - combine point cut example)");
 	}
 	
 	@Before("allShapeMethods()")
