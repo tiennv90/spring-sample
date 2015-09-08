@@ -14,7 +14,7 @@ public class AopMain {
 		ShapeService shapeService = (ShapeService) applicationContext.getBean("shapeService");
 		
 		Shape shape = shapeService.getShape();
-		
+		shape.setName("Dummy Name");
 		System.out.println(shape.getName());
 	}
 

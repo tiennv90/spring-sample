@@ -17,6 +17,16 @@ public class LoggingAspect {
 		System.out.println("Global Advice run. Get method called (point cut)");
 	}
 	
+	@Before("args(String)")
+	public void stringArgumentMethods() {
+		System.out.println("A method that takes String arguments has been called");
+	}
+	
+	@Before("args(name)")
+	public void stringArgumentMethods2(String name) {
+		System.out.println("A method that takes String arguments has been called: "+ name);
+	}
+	
 	@Before("allGetters() && allShapeMethods()")
 	public void loggingSecondAdvice() {
 		System.out.println("Second advice executed (point cut - combine point cut example)");
