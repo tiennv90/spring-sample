@@ -6,18 +6,28 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 		
 	<aop:aspectj-autoproxy />
-		
+	<!--  	
 	<bean name="triangle" class="com.spring.sample.training.aop.model.Triangle" >
 		<property name="name" value="Triangle Name"/>
 	</bean>
+	-->
 	
 	<bean name="circle" class="com.spring.sample.training.aop.model.Circle" >
-		<property name="name" value="Circle Name"/>
+		<!--  <property name="name" value="Circle Name"/>-->
 	</bean>	
 	
 	<bean name="shapeService" class="com.spring.sample.training.aop.service.ShapeService" >
 		<property name="shape" ref="circle" />
 	</bean>	
 	
+	<!--
+	 advice is executed only for functions in the program, 
+	 it does not get executed for container call 
+	 -->
+	 
+	<!--  
 	<bean name="loggingAspect" class="com.spring.sample.training.aop.LoggingAspect" />
+	<bean name="loggingAspectJoinPointExample" class="com.spring.sample.training.aop.LoggingAspectJoinPointExample" />
+	-->
+	<bean name="loggingAspectAfterAdviceExample" class="com.spring.sample.training.aop.LoggingAspectAfterAdviceExample" />
 </beans>

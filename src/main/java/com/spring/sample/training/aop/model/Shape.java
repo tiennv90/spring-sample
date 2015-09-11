@@ -10,7 +10,13 @@ public abstract class Shape {
 
 	public void setName(String name) {
 		this.name = name;
+		System.out.println("Setter function called");
+		throw (new RuntimeException());
 	}
 	
-	
+	public String setNameAndReturn(String name) {
+		this.name = name;
+		System.out.println("setNameAndReturn function called");
+		return name;	
+	}
 }
