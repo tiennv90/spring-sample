@@ -25,8 +25,6 @@ public class TrackCounterTest {
 		cd.playTrack(3);
 		cd.playTrack(3);
 		cd.playTrack(3);
-		cd.playTrack(7);
-		cd.playTrack(7);
 		
 		assertEquals(1, counter.getPlayCount(1));
 		assertEquals(1, counter.getPlayCount(2));
