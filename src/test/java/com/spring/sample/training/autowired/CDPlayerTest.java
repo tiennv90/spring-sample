@@ -19,10 +19,18 @@ public class CDPlayerTest {
 	@Autowired
 	private MediaPlayer player;
 	
+	@Autowired 
+	private MediaPlayer player2;
+	
 	@Test
 	public void testNotNull() {
 		assertNotNull(compactDisc);
 		assertNotNull(player);
+		
+		//by default bean scope is singleton 
+		//that make these 2 bean are equal
+		
+		assertEquals(player, player2);
 	}
 	
 	@Test
