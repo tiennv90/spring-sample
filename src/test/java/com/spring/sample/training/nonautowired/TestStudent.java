@@ -1,4 +1,4 @@
-package com.spring.sample.training.autowired;
+package com.spring.sample.training.nonautowired;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
