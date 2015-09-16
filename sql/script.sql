@@ -10,7 +10,7 @@
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 -- 
--- Database: `spring-ecomercial`
+-- Database: `smallspringapp`
 -- 
 
 -- --------------------------------------------------------
@@ -77,6 +77,8 @@ CREATE TABLE `orders` (
   `orderDate` datetime default NULL,
   `status` varchar(255) default NULL,
   `cardNumber` varchar(255) default NULL,
+  `cardexpiresMonth` varchar(20) DEFAULT NULL,
+  `cardexpiresYear` varchar(20) DEFAULT NULL,  
   `cvv` varchar(255) default NULL,
   `userId` int(11) NOT NULL,
   PRIMARY KEY  (`id`),
