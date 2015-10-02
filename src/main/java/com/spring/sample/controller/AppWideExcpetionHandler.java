@@ -8,6 +8,6 @@ public class AppWideExcpetionHandler {
 	
 	@ExceptionHandler(Exception.class)
 	public String exceptionHandler() {
-		return "error/404.html";
+		return "error/404";
 	}
 }
